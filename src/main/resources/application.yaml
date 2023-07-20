@@ -1,0 +1,34 @@
+
+server:
+  port: ${SERVER_PORT:8090}
+
+spring:
+  application:
+    name: data-vista
+  jackson:
+    default-property-inclusion: non_null
+  datasource:
+    url: jdbc:mysql://localhost:3306/DataVista
+    username: root
+    password: 123456
+    hikari:
+      connection-timeout: 3000
+      minimum-idle: 1
+      maximum-pool-size: 30
+      idle-timeout: 600000
+      max-lifetime: 3600000
+  jpa:
+    generate-ddl: true
+    show-sql: true
+  cache:
+    type: caffeine
+    caffeine:
+      spec: initialCapacity=10,maximumSize=200,expireAfterWrite=5m
+  docker:
+    compose:
+      enabled: false
+
+logging:
+  level:
+    root: info
+    io.mvvm: debug
