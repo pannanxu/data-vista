@@ -7,11 +7,15 @@ export default defineConfig({
     plugins: [react()],
     build: {
         lib: {
-            // Could also be a dictionary or array of multiple entry points
             entry: resolve(__dirname, 'src/main.ts'),
             name: 'core',
-            // the proper extensions will be added
-            fileName: 'core',
+            fileName: (format) => `main.${format}.js`,
+        },
+        rollupOptions: {
+            external: ["react", "react-dom", "react/jsx-runtime"],
+            output: {
+                globals: {},
+            },
         },
     },
 })

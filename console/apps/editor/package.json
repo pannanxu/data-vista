@@ -10,15 +10,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "@data-vista/components": "workspace:*",
     "@data-vista/core": "workspace:*",
     "@data-vista/runtime": "workspace:*",
-    "@data-vista/components": "workspace:*"
+    "@loadable/component": "^5.15.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "systemjs": "^6.14.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
+    "@types/systemjs": "^6.13.1",
     "@typescript-eslint/eslint-plugin": "^5.61.0",
     "@typescript-eslint/parser": "^5.61.0",
     "@vitejs/plugin-react": "^4.0.1",

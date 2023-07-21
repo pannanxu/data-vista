@@ -1,9 +1,5 @@
 lockfileVersion: '6.0'
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
-
 importers:
 
   .:
@@ -53,12 +49,18 @@ importers:
       '@data-vista/runtime':
         specifier: workspace:*
         version: link:../../packages/runtime
+      '@loadable/component':
+        specifier: ^5.15.3
+        version: 5.15.3(react@18.2.0)
       react:
         specifier: ^18.2.0
         version: 18.2.0
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
+      systemjs:
+        specifier: ^6.14.1
+        version: 6.14.1
     devDependencies:
       '@types/react':
         specifier: ^18.2.14
@@ -66,6 +68,9 @@ importers:
       '@types/react-dom':
         specifier: ^18.2.6
         version: 18.2.6
+      '@types/systemjs':
+        specifier: ^6.13.1
+        version: 6.13.1
       '@typescript-eslint/eslint-plugin':
         specifier: ^5.61.0
         version: 5.61.0(@typescript-eslint/parser@5.61.0)(eslint@8.44.0)(typescript@5.0.2)
@@ -99,9 +104,6 @@ importers:
       '@types/react-dom':
         specifier: ^18.2.6
         version: 18.2.6
-      '@typescript-eslint/eslint-plugin':
-        specifier: ^5.61.0
-        version: 5.61.0(@typescript-eslint/parser@5.61.0)(eslint@8.44.0)(typescript@5.0.2)
       '@typescript-eslint/parser':
         specifier: ^5.61.0
         version: 5.61.0(eslint@8.44.0)(typescript@5.0.2)
@@ -117,6 +119,9 @@ importers:
       eslint-plugin-react-refresh:
         specifier: ^0.4.1
         version: 0.4.1(eslint@8.44.0)
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
       typescript:
         specifier: ^5.0.2
         version: 5.0.2
@@ -132,9 +137,6 @@ importers:
       '@types/react-dom':
         specifier: ^18.2.6
         version: 18.2.6
-      '@typescript-eslint/eslint-plugin':
-        specifier: ^5.61.0
-        version: 5.61.0(@typescript-eslint/parser@5.61.0)(eslint@8.44.0)(typescript@5.0.2)
       '@typescript-eslint/parser':
         specifier: ^5.61.0
         version: 5.61.0(eslint@8.44.0)(typescript@5.0.2)
@@ -150,6 +152,9 @@ importers:
       eslint-plugin-react-refresh:
         specifier: ^0.4.1
         version: 0.4.1(eslint@8.44.0)
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
       typescript:
         specifier: ^5.0.2
         version: 5.0.2
@@ -165,9 +170,6 @@ importers:
       '@types/react-dom':
         specifier: ^18.2.6
         version: 18.2.6
-      '@typescript-eslint/eslint-plugin':
-        specifier: ^5.61.0
-        version: 5.61.0(@typescript-eslint/parser@5.61.0)(eslint@8.44.0)(typescript@5.0.2)
       '@typescript-eslint/parser':
         specifier: ^5.61.0
         version: 5.61.0(eslint@8.44.0)(typescript@5.0.2)
@@ -183,6 +185,9 @@ importers:
       eslint-plugin-react-refresh:
         specifier: ^0.4.1
         version: 0.4.1(eslint@8.44.0)
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
       typescript:
         specifier: ^5.0.2
         version: 5.0.2
@@ -386,6 +391,13 @@ packages:
       '@babel/core': 7.22.9
       '@babel/helper-plugin-utils': 7.22.5
     dev: true
+
+  /@babel/runtime@7.22.6:
+    resolution: {integrity: sha512-wDb5pWm4WDdF6LFUde3Jl8WzPA+3ZbxYqkC6xAXuD3irdEHN1k0NfTRrJD8ZD378SJ61miMLCqIOXYhd8x+AJQ==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      regenerator-runtime: 0.13.11
+    dev: false
 
   /@babel/template@7.22.5:
     resolution: {integrity: sha512-X7yV7eiwAxdj9k94NEylvbVHLiVG1nvzCV2EAowhxLTwODV1jl9UzZ48leOC0sH7OnuHrIkllaBgneUykIcZaw==}
@@ -712,6 +724,18 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
+  /@loadable/component@5.15.3(react@18.2.0):
+    resolution: {integrity: sha512-VOgYgCABn6+/7aGIpg7m0Ruj34tGetaJzt4bQ345FwEovDQZ+dua+NWLmuJKv8rWZyxOUSfoJkmGnzyDXH2BAQ==}
+    engines: {node: '>=8'}
+    peerDependencies:
+      react: ^16.3.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@babel/runtime': 7.22.6
+      hoist-non-react-statics: 3.3.2
+      react: 18.2.0
+      react-is: 16.13.1
+    dev: false
+
   /@nodelib/fs.scandir@2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
     engines: {node: '>= 8'}
@@ -765,6 +789,10 @@ packages:
 
   /@types/semver@7.5.0:
     resolution: {integrity: sha512-G8hZ6XJiHnuhQKR7ZmysCeJWE08o8T0AXtk5darsCaTVsYZhhgUrq53jizaR2FvsoeCwJhlmwTjkXBY5Pn/ZHw==}
+    dev: true
+
+  /@types/systemjs@6.13.1:
+    resolution: {integrity: sha512-Jxo2/uif1WpkabfyvWpFmPWFPDdwKUmyL7xWzjtxNALEu2pgce+eISjbf0Vr+SsK/D9savO5kTRcf+COLK5eiQ==}
     dev: true
 
   /@typescript-eslint/eslint-plugin@5.61.0(@typescript-eslint/parser@5.61.0)(eslint@8.44.0)(typescript@5.0.2):
@@ -1406,6 +1434,12 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /hoist-non-react-statics@3.3.2:
+    resolution: {integrity: sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==}
+    dependencies:
+      react-is: 16.13.1
+    dev: false
+
   /ignore@5.2.4:
     resolution: {integrity: sha512-MAb38BcSbH0eHNBxn7ql2NH/kX33OkB3lZ1BNdh7ENeRChHTYsTvWrMubiIAMNS2llXEEgZ1MUOBtXChP3kaFQ==}
     engines: {node: '>= 4'}
@@ -1515,7 +1549,6 @@ packages:
     hasBin: true
     dependencies:
       js-tokens: 4.0.0
-    dev: false
 
   /lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
@@ -1672,6 +1705,10 @@ packages:
       scheduler: 0.23.0
     dev: false
 
+  /react-is@16.13.1:
+    resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
+    dev: false
+
   /react-refresh@0.14.0:
     resolution: {integrity: sha512-wViHqhAd8OHeLS/IRMJjTSDHF3U9eWi62F/MledQGPdJGDhodXJ9PBLNGr6WWL7qlH12Mt3TyTpbS+hGXMjCzQ==}
     engines: {node: '>=0.10.0'}
@@ -1682,6 +1719,9 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
+
+  /regenerator-runtime@0.13.11:
+    resolution: {integrity: sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==}
     dev: false
 
   /resolve-from@4.0.0:
@@ -1781,6 +1821,10 @@ packages:
     dependencies:
       has-flag: 4.0.0
     dev: true
+
+  /systemjs@6.14.1:
+    resolution: {integrity: sha512-8ftwWd+XnQtZ/aGbatrN4QFNGrKJzmbtixW+ODpci7pyoTajg4sonPP8aFLESAcuVxaC1FyDESt+SpfFCH9rZQ==}
+    dev: false
 
   /text-table@0.2.0:
     resolution: {integrity: sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==}
@@ -1907,3 +1951,7 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
