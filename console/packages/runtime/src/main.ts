@@ -1,5 +1,3 @@
-import Runtime from "./runtime.ts";
-
-export {
-    Runtime
-};
+export * from "./Runtime";
+export * from './Render';
+export * from './Plugin';

@@ -1,4 +1,4 @@
-
+import Example from './example.tsx'
 
 interface RuntimeI {
     readonly version: string;
@@ -9,4 +9,7 @@ class Runtime implements RuntimeI {
 }
 
 
-export default Runtime;
+export {
+    Runtime,
+    Example
+}

@@ -8,12 +8,11 @@ export default defineConfig({
     plugins: [react()],
     define: {
         'process.env': {}
+    },
+    resolve: {
+        alias: {
+            '@': resolve(__dirname, 'src')
+            // "@": fileURLToPath(new URL("./src", import.meta.url)),
+        }
     }
-
-    // resolve: {
-    //     alias: {
-    //         '@': resolve(__dirname, 'src')
-    //         // "@": fileURLToPath(new URL("./src", import.meta.url)),
-    //     }
-    // }
 });

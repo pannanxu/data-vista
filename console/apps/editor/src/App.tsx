@@ -1,14 +1,11 @@
 import {useState} from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
-import "./App.css";
+import "@/App.css";
 
-import "systemjs/dist/system.min";
-
-import {Runtime} from "@data-vista/runtime";
+import {DynamicComponent, Runtime} from "@data-vista/runtime";
 import {Core} from "@data-vista/core";
 import {Components} from "@data-vista/components";
-import {RenderComponent} from "@data-vista/components/src/Render";
 
 const runtime = new Runtime();
 const core = new Core();
@@ -38,10 +35,7 @@ function App() {
                 }}>
                     count is {count}
                 </button>
-                <RenderComponent component={"/components.umd.js"} config={{
-                    error: count,
-                    setError: setCount
-                }}/>
+                <DynamicComponent url={"/main.umd.js"} error={count} setError={setCount}/>
             </div>
         </>
     );
