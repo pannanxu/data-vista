@@ -1,18 +1,15 @@
 {
-  "name": "@data-vista/runtime",
+  "name": "@data-vista/core",
   "version": "0.0.0",
   "main": "./index.tsx",
   "types": "./index.tsx",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint \"**/*.ts*\"",
-    "generate:component": "turbo gen react-component"
+    "lint": "eslint \"**/*.ts*\""
   },
   "devDependencies": {
     "@data-vista/eslint-config-custom": "workspace:*",
     "@data-vista/tsconfig": "workspace:*",
-    "@data-vista/materials": "workspace:*",
-    "@data-vista/core": "workspace:*",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "eslint": "^7.32.0",

@@ -1,9 +1,5 @@
 lockfileVersion: '6.0'
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
-
 importers:
 
   .:
@@ -26,40 +22,9 @@ importers:
 
   apps/docs:
     dependencies:
-      '@data-vista/ui':
+      '@data-vista/core':
         specifier: workspace:*
-        version: link:../../packages/ui
-      next:
-        specifier: ^13.4.1
-        version: 13.4.1(react-dom@18.2.0)(react@18.2.0)
-      react:
-        specifier: ^18.2.0
-        version: 18.2.0
-      react-dom:
-        specifier: ^18.2.0
-        version: 18.2.0(react@18.2.0)
-    devDependencies:
-      '@data-vista/eslint-config-custom':
-        specifier: workspace:*
-        version: link:../../packages/eslint-config-custom
-      '@data-vista/tsconfig':
-        specifier: workspace:*
-        version: link:../../packages/tsconfig
-      '@types/node':
-        specifier: ^17.0.12
-        version: 17.0.45
-      '@types/react':
-        specifier: ^18.0.22
-        version: 18.2.5
-      '@types/react-dom':
-        specifier: ^18.0.7
-        version: 18.2.3
-      typescript:
-        specifier: ^4.5.3
-        version: 4.9.5
-
-  apps/web:
-    dependencies:
+        version: link:../../packages/core
       '@data-vista/editor':
         specifier: workspace:*
         version: link:../../packages/editor
@@ -101,6 +66,76 @@ importers:
         specifier: ^4.5.3
         version: 4.9.5
 
+  apps/web:
+    dependencies:
+      '@data-vista/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@data-vista/editor':
+        specifier: workspace:*
+        version: link:../../packages/editor
+      '@data-vista/materials':
+        specifier: workspace:*
+        version: link:../../packages/materials
+      '@data-vista/runtime':
+        specifier: workspace:*
+        version: link:../../packages/runtime
+      '@data-vista/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
+      next:
+        specifier: ^13.4.1
+        version: 13.4.1(react-dom@18.2.0)(react@18.2.0)
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
+    devDependencies:
+      '@data-vista/eslint-config-custom':
+        specifier: workspace:*
+        version: link:../../packages/eslint-config-custom
+      '@data-vista/tsconfig':
+        specifier: workspace:*
+        version: link:../../packages/tsconfig
+      '@types/node':
+        specifier: ^17.0.12
+        version: 17.0.45
+      '@types/react':
+        specifier: ^18.0.22
+        version: 18.2.5
+      '@types/react-dom':
+        specifier: ^18.0.7
+        version: 18.2.3
+      typescript:
+        specifier: ^4.5.3
+        version: 4.9.5
+
+  packages/core:
+    devDependencies:
+      '@data-vista/eslint-config-custom':
+        specifier: workspace:*
+        version: link:../eslint-config-custom
+      '@data-vista/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+      '@types/react':
+        specifier: ^18.2.0
+        version: 18.2.5
+      '@types/react-dom':
+        specifier: ^18.2.0
+        version: 18.2.3
+      eslint:
+        specifier: ^7.32.0
+        version: 7.32.0
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      typescript:
+        specifier: ^4.5.2
+        version: 4.9.5
+
   packages/editor:
     dependencies:
       '@react-three/fiber':
@@ -119,9 +154,18 @@ importers:
         specifier: ^1.26.0
         version: 1.26.0
     devDependencies:
+      '@data-vista/core':
+        specifier: workspace:*
+        version: link:../core
       '@data-vista/eslint-config-custom':
         specifier: workspace:*
         version: link:../eslint-config-custom
+      '@data-vista/materials':
+        specifier: workspace:*
+        version: link:../materials
+      '@data-vista/runtime':
+        specifier: workspace:*
+        version: link:../runtime
       '@data-vista/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -189,9 +233,15 @@ importers:
 
   packages/runtime:
     devDependencies:
+      '@data-vista/core':
+        specifier: workspace:*
+        version: link:../core
       '@data-vista/eslint-config-custom':
         specifier: workspace:*
         version: link:../eslint-config-custom
+      '@data-vista/materials':
+        specifier: workspace:*
+        version: link:../materials
       '@data-vista/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -6583,6 +6633,7 @@ packages:
   /typescript@4.9.5:
     resolution: {integrity: sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==}
     engines: {node: '>=4.2.0'}
+    hasBin: true
 
   /ua-parser-js@0.7.35:
     resolution: {integrity: sha512-veRf7dawaj9xaWEu9HoTVn5Pggtc/qj+kqTOFvNiN1l0YdxwC1kvel57UCjThjGa3BHBihE8/UJAHI+uQHmd/g==}
@@ -6811,3 +6862,7 @@ packages:
     dependencies:
       react: 18.2.0
     dev: false
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false

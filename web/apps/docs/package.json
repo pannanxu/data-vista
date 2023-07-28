@@ -12,7 +12,11 @@
     "next": "^13.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@data-vista/ui": "workspace:*"
+    "@data-vista/ui": "workspace:*",
+    "@data-vista/editor": "workspace:*",
+    "@data-vista/materials": "workspace:*",
+    "@data-vista/runtime": "workspace:*",
+    "@data-vista/core": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^17.0.12",

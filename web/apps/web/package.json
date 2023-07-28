@@ -15,7 +15,8 @@
     "@data-vista/ui": "workspace:*",
     "@data-vista/editor": "workspace:*",
     "@data-vista/materials": "workspace:*",
-    "@data-vista/runtime": "workspace:*"
+    "@data-vista/runtime": "workspace:*",
+    "@data-vista/core": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^17.0.12",
