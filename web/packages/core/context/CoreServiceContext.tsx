@@ -1,6 +1,6 @@
 "use client"
 import React, {createContext} from 'react';
-import ConfigMapService from "../service/ConfigMapService";
+import ConfigMapService from "../service/ConfigMap/ConfigMapService";
 
 export type CoreServiceContextType = {
     configMap: ConfigMapService;
