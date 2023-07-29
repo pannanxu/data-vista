@@ -1,5 +1,5 @@
 module.exports = {
-    output: 'export',
+    // output: 'export',
     reactStrictMode: true,
     transpilePackages: [
         "@data-vista/ui",

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbo",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -24,6 +24,6 @@
     "@types/react-dom": "^18.2.7",
     "@data-vista/eslint-config-custom": "workspace:*",
     "@data-vista/tsconfig": "workspace:*",
-    "typescript": "^4.5.3"
+    "typescript": "^5.1.6"
   }
 }

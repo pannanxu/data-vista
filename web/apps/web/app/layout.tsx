@@ -1,4 +1,7 @@
-import Link from "next/link";
+import React from "react";
+
+import {VistaBase} from "@data-vista/ui";
+import {CoreServiceProvider} from "@data-vista/core/context/CoreServiceContext";
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -10,13 +13,11 @@ export default function RootLayout({
     return (
         <html lang="en">
         <body>
-        {baseUrl}
-        <ul>
-            <li><Link href={'/'}>home</Link></li>
-            <li><Link href={'/editor'}>editor</Link></li>
-            <li><Link href={'/view'}>view</Link></li>
-        </ul>
-        {children}
+        <CoreServiceProvider>
+            <VistaBase>
+                {children}
+            </VistaBase>
+        </CoreServiceProvider>
         </body>
         </html>
     );
