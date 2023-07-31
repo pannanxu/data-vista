@@ -1,11 +1,13 @@
-"use client"
 import React from "react";
 import LayoutUI, {LayoutHeader, LayoutMain, LayoutSideNav, LayoutSidePane} from "@data-vista/ui/LayoutUI";
 import EditorMaterials from "@data-vista/editor/Materials";
 import ConfigMapEditor from "@data-vista/editor/ConfigMap";
 import ThemeColorScheme from "@data-vista/ui/ThemeColorScheme";
+import {initLoadCoreMaterials} from "@data-vista/materials";
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
+initLoadCoreMaterials()
 
 export default function EditorPageLayout({
                                              children,

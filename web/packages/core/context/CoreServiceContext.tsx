@@ -1,17 +1,22 @@
 "use client"
 import React, {createContext} from 'react';
-import ConfigMapService from "../service/ConfigMap/ConfigMapService";
+import ConfigMapService from "../service/configMap/ConfigMapService";
+import ConfigMapRepository from "../repository/ConfigMapRepository";
+import Api from '../api/api';
+import Apis from '../api/apis';
+
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL!;
+const api = new Api(baseUrl);
+const apis = new Apis(api);
 
 export type CoreServiceContextType = {
     configMap: ConfigMapService;
-    configMap1: ConfigMapService;
 };
 
 export type coreServiceKeys = keyof CoreServiceContextType;
 
 const services: CoreServiceContextType = {
-    configMap: new ConfigMapService(),
-    configMap1: new ConfigMapService(),
+    configMap: new ConfigMapService(new ConfigMapRepository(apis)),
 }
 
 const CoreServiceContext = createContext<CoreServiceContextType>(services);

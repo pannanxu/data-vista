@@ -1,3 +1,5 @@
+"use client";
+
 import useCore from "@data-vista/core/useCore";
 import {VistaButton} from "@data-vista/ui";
 import withMonitor from "@data-vista/core/withMonitor";

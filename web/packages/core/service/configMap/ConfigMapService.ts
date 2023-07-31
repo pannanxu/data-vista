@@ -3,6 +3,7 @@ import ConfigMapLocker from "./ConfigMapLocker";
 import ConfigMapCombiner from './ConfigMapCombiner';
 import ConfigMapBasic from './ConfigMapBasic';
 import ConfigMapDataSet from './ConfigMapDataSet';
+import ConfigMapRepository from '../../repository/ConfigMapRepository';
 
 type AdditionalInfo = Record<string, any>
 
@@ -36,8 +37,11 @@ class ConfigMapService {
      * value: component config
      */
     private config: Map<string, ComponentConfigMap>
-    
-    constructor() {
+
+    private readonly repository: ConfigMapRepository;
+
+    constructor(repository: ConfigMapRepository) {
+        this.repository = repository;
         this.config = new Map<string, ComponentConfigMap>();
         makeAutoObservable(this);
     }

@@ -9,3 +9,5 @@ export const VistaButton: React.FC<{
 }> = (props) => {
     return <Button {...props}>{props.children}</Button>
 };
+
+// export const VistaButton = Button;

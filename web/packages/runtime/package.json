@@ -11,7 +11,6 @@
   "devDependencies": {
     "@data-vista/eslint-config-custom": "workspace:*",
     "@data-vista/tsconfig": "workspace:*",
-    "@data-vista/materials": "workspace:*",
     "@data-vista/core": "workspace:*",
     "@types/react": "^18.2.17",
     "@types/react-dom": "^18.2.7",
