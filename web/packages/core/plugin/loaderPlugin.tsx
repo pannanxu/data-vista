@@ -3,12 +3,17 @@ import React from "react";
 import Script from "next/script";
 import ReactDOM from "react-dom";
 import JSX from "react/jsx-runtime";
+import {definePlugin} from "./plugins";
 
 if (typeof window !== "undefined") {
+    // @ts-ignore
     window.React = React;
+    // @ts-ignore
     window.ReactDOM = ReactDOM;
     // @ts-ignore
     window.jsxRuntime = JSX;
+    // @ts-ignore
+    window.core = {definePlugin}
 }
 
 const LoaderPlugin: React.FC<{
@@ -23,9 +28,8 @@ const LoaderPlugin: React.FC<{
             <Script
                 src={url}
                 onLoad={() => {
-                    console.log("window", window);
                     // @ts-ignore
-                    setPluginComponent(PluginStarter.default.components[0]);
+                    setPluginComponent(PluginStarter.default.components[0].component);
                 }}/>
             {PluginComponent && <PluginComponent {...props}/>}
         </React.Suspense>

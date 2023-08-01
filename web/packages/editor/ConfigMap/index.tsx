@@ -1,9 +1,9 @@
 "use client";
 
-import useCore from "@data-vista/core/useCore";
+import {useCore} from "@data-vista/core";
 import {VistaButton} from "@data-vista/ui";
 import withMonitor from "@data-vista/core/withMonitor";
-import ConfigMapService from "@data-vista/core/service/ConfigMap/ConfigMapService";
+import {ConfigMapService} from "@data-vista/core";
 
 const ConfigMapComponent = withMonitor<{
     service: ConfigMapService
@@ -32,7 +32,6 @@ const ConfigMapEditor = () => {
         <ConfigMapComponents service={configMapService}/>
 
         <VistaButton onClick={() => {
-            const key = configMapService.getConfigKeys()[0];
             configMapService.getConfigMap(new Date().valueOf().toString());
         }}>
             get

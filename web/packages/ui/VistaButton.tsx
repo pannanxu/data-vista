@@ -1,13 +1,8 @@
 "use client";
 
-import Button from '@mui/joy/Button';
+import Button, {ButtonProps} from '@mui/joy/Button';
 import React from "react";
 
-export const VistaButton: React.FC<{
-    onClick?: () => void;
-    children?: React.ReactNode
-}> = (props) => {
+export const VistaButton: React.FC<ButtonProps> = (props) => {
     return <Button {...props}>{props.children}</Button>
 };
-
-// export const VistaButton = Button;

@@ -1,13 +1,16 @@
 import React from "react";
+import {definePlugin} from "@data-vista/core";
 
 // 导出的组件必须采用 React.lazy 包装
 const PluginStarter = React.lazy(() => import('./component.tsx'));
 
-const plugin = {
+export default definePlugin({
     name: 'plugin-starter',
-    extensionPoints: 'MaterialComponent',
+    extensionPoints: 'MaterialComponent' as any,
     components: [
-        PluginStarter
+        {
+            name: 'plugin-line',
+            component: PluginStarter,
+        }
     ]
-}
-export default plugin
+})

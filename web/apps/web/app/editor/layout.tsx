@@ -3,11 +3,8 @@ import LayoutUI, {LayoutHeader, LayoutMain, LayoutSideNav, LayoutSidePane} from 
 import EditorMaterials from "@data-vista/editor/Materials";
 import ConfigMapEditor from "@data-vista/editor/ConfigMap";
 import ThemeColorScheme from "@data-vista/ui/ThemeColorScheme";
-import {initLoadCoreMaterials} from "@data-vista/materials";
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-
-initLoadCoreMaterials()
 
 export default function EditorPageLayout({
                                              children,

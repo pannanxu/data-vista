@@ -1,4 +1,4 @@
-import CoreServiceContext, {coreServiceKeys} from "./context/CoreServiceContext";
+import CoreServiceContext, {coreServiceKeys} from "../context/CoreServiceContext";
 import {useContext} from "react";
 
 
@@ -7,4 +7,6 @@ const useCore = (name: coreServiceKeys) => {
     return context[name]
 }
 
-export default useCore;
+export {
+    useCore
+};

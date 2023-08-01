@@ -1,6 +1,6 @@
 "use client";
-import LoaderPlugin from "@data-vista/core/plugin/loaderPlugin";
 import React, {useState} from "react";
+import {LoaderPlugin} from "@data-vista/core";
 
 const FreelyEditorLayout = () => {
 
@@ -14,7 +14,7 @@ const FreelyEditorLayout = () => {
     return <div className={"freely-layout-editor"}>
         <div>FreelyEditor: {time}</div>
         <LoaderPlugin
-            url={"http://127.0.0.1:8081/main.js"}
+            url={"http://127.0.0.1:801/main.js"}
             name={"PluginStarter"}
             props={{
                 time: time,

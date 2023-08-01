@@ -7,9 +7,10 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
+    "@changesets/cli": "^2.26.2",
+    "@data-vista/eslint-config-custom": "workspace:*",
     "@turbo/gen": "^1.9.7",
     "eslint": "^7.32.0",
-    "@data-vista/eslint-config-custom": "workspace:*",
     "prettier": "^2.5.1",
     "turbo": "latest"
   },

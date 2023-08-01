@@ -16,11 +16,12 @@ export default defineConfig({
             fileName: () => "main.js",
         },
         rollupOptions: {
-            external: ["react", "react/jsx-runtime"],
+            external: ["react", "react-dom", "react/jsx-runtime", "@data-vista/core"],
             output: {
                 globals: {
                     react: "React",
                     "react/jsx-runtime": "jsxRuntime",
+                    "react-dom": "ReactDOM",
                 },
                 exports: "named",
             },

@@ -1,4 +1,4 @@
-import {ExtensionPoint} from "core/ExtensionPoint";
+import {ExtensionPoint} from "../ExtensionPoint";
 
 export type MaterialComponentType = {
     name: string

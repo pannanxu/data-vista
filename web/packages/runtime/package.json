@@ -1,21 +1,39 @@
 {
   "name": "@data-vista/runtime",
-  "version": "0.0.0",
-  "main": "./index.tsx",
-  "types": "./index.tsx",
+  "version": "0.0.1",
   "license": "MIT",
+  "private": false,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "module": "./dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
+    "runtime:build": "tsup index.ts --format cjs --dts",
+    "runtime:dev": "npm run runtime:build -- --watch",
     "lint": "eslint \"**/*.ts*\"",
     "generate:component": "turbo gen react-component"
   },
   "devDependencies": {
+    "@data-vista/core": "workspace:*",
     "@data-vista/eslint-config-custom": "workspace:*",
     "@data-vista/tsconfig": "workspace:*",
-    "@data-vista/core": "workspace:*",
     "@types/react": "^18.2.17",
     "@types/react-dom": "^18.2.7",
     "eslint": "^7.32.0",
     "react": "^18.2.0",
+    "tsup": "^7.1.0",
     "typescript": "^5.1.6"
   }
 }

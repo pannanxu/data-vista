@@ -21,7 +21,7 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
       },
       {
         type: "add",
-        path: "{{pascalCase name}}/types.d.ts",
+        path: "{{pascalCase name}}/index.d.ts",
         templateFile: "templates/types.d.hbs",
       },
     ],

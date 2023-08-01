@@ -2,8 +2,4 @@
   "extends": "@data-vista/tsconfig/react-library.json",
   "include": ["."],
   "exclude": ["dist", "build", "node_modules"],
-  "compilerOptions": {
-    "emitDecoratorMetadata": true,
-    "experimentaldecorators": true,
-  }
 }

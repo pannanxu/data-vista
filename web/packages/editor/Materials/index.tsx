@@ -6,7 +6,6 @@ import {ExtensionPoint} from "@data-vista/core/plugin/ExtensionPoint";
 
 const EditorMaterials = () => {
     const {plugins} = usePluginStore()
-
     const components = useMemo(() => {
         const components: React.ReactNode[] = []
         Object.keys(plugins).map(e => plugins[e]).filter(plugin => plugin.extensionPoints === ExtensionPoint.MaterialComponent).forEach(plugin => {
