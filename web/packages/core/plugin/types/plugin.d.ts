@@ -1,4 +1,4 @@
-import {ExtensionPoint} from "../ExtensionPoint";
+export type ExtensionPoint = 'MaterialComponent' | 'RuleNode'
 
 export type MaterialComponentType = {
     name: string

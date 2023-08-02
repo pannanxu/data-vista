@@ -13,8 +13,6 @@ export type CoreServiceContextType = {
     configMap: ConfigMapService;
 };
 
-export type coreServiceKeys = keyof CoreServiceContextType;
-
 const services: CoreServiceContextType = {
     configMap: new ConfigMapService(new ConfigMapRepository(apis)),
 }

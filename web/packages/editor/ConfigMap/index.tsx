@@ -27,7 +27,7 @@ const ConfigMapComponents = withMonitor<{
 })
 
 const ConfigMapEditor = () => {
-    const configMapService = useCore('configMap');
+    const configMapService = useCore(e => e.configMap);
     return <div className={"config-map-editor"}>
         <ConfigMapComponents service={configMapService}/>
 
