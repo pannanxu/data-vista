@@ -1,0 +1,14 @@
+.viewer {
+    position: absolute !important;
+    width: calc(100% - 30px);
+    height: calc(100% - 30px);
+    background: #F4F6F8;
+    top: 30px;
+    left: 30px;
+}
+
+.viewport {
+    position: relative !important;
+    background-color: #fafafa;
+    box-shadow: 0 2px 8px #f2f3f5;;
+}

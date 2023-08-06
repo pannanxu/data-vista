@@ -6,14 +6,16 @@ const VistaMaterialItem: React.FC<{
     icon: any,
     displayName: string
 }> = ({icon, displayName}) => {
-    return <ListItemButton>
-        <ListItemDecorator sx={{alignSelf: 'flex-start'}}>
-            {icon}
-        </ListItemDecorator>
-        <ListItemContent>
-            <Typography>{displayName}</Typography>
-        </ListItemContent>
-    </ListItemButton>
+    return <div className={"vista-material-item"}>
+        <ListItemButton>
+            <ListItemDecorator sx={{alignSelf: 'flex-start'}}>
+                {icon}
+            </ListItemDecorator>
+            <ListItemContent>
+                <Typography>{displayName}</Typography>
+            </ListItemContent>
+        </ListItemButton>
+    </div>
 }
 
 export default VistaMaterialItem;

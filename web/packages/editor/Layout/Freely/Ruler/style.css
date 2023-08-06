@@ -1,0 +1,48 @@
+
+.ruler {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9;
+}
+
+.ruler.horizontal {
+    left: 30px;
+    width: calc(100% - 30px);
+    height: 30px;
+    background-color: #f3f3f3;
+}
+
+.ruler.vertical {
+    top: 30px;
+    width: 30px;
+    height: calc(100% - 30px);
+    background-color: #f3f3f3;
+}
+
+.ruler-box {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    background: #444;
+    box-sizing: border-box;
+    z-index: 21;
+}
+
+.ruler-box:before, .ruler-box:after {
+    position: absolute;
+    content: "";
+    background: #777;
+}
+
+/*.ruler-box:before {*/
+/*    width: 1px;*/
+/*    height: 100%;*/
+/*    left: 100%;*/
+/*}*/
+
+/*.ruler-box:after {*/
+/*    height: 1px;*/
+/*    width: 100%;*/
+/*    top: 100%;*/
+/*}*/

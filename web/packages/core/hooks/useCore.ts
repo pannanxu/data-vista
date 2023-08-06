@@ -1,12 +1,14 @@
-import CoreServiceContext, {CoreServiceContextType} from "../context/CoreServiceContext";
-import {useContext} from "react";
+import {enableStaticRendering} from "mobx-react-lite";
+import CoreService from "../service/CoreService";
 
+enableStaticRendering(typeof window === "undefined");
 
-const useCore = <T>(name: (e: CoreServiceContextType) => T) => {
-    const context = useContext(CoreServiceContext);
-    return name(context)
+const core = new CoreService();
+
+const useCore = () => {
+    return core;
 }
 
 export {
-    useCore
+    useCore, core
 };

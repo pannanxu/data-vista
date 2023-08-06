@@ -1,14 +1,15 @@
 import {definePlugin} from "./plugin/plugins";
 import LoaderPlugin from './plugin/loaderPlugin'
-import ConfigMapService from './service/configMap/ConfigMapService';
 import {useCore} from './hooks/useCore';
-import CoreServiceContext, { CoreServiceProvider } from './context/CoreServiceContext';
+import ConfigMapService from "./service/configMap/ConfigMapService";
+import { publishEvent, useEvent } from "./hooks/useEvent";
 
 export {
     definePlugin,
     LoaderPlugin,
-    ConfigMapService,
     useCore,
-    CoreServiceContext,
-    CoreServiceProvider
+    publishEvent,
+    useEvent,
+
+    ConfigMapService,
 }

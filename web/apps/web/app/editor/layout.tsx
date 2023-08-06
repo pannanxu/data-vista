@@ -1,31 +1,31 @@
-import React from "react";
-import LayoutUI, {LayoutHeader, LayoutMain, LayoutSideNav, LayoutSidePane} from "@data-vista/ui/LayoutUI";
+"use client";
+import React, {useRef} from "react";
 import EditorMaterials from "@data-vista/editor/Materials";
 import ConfigMapEditor from "@data-vista/editor/ConfigMap";
 import ThemeColorScheme from "@data-vista/ui/ThemeColorScheme";
+import EditorLayout from "@data-vista/ui/EditorLayout";
+import {initRegisterCoreMaterials} from "@data-vista/materials";
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
+initRegisterCoreMaterials()
 
 export default function EditorPageLayout({
                                              children,
                                          }: {
-    children: React.ReactNode;
+    children: any;
 }) {
+
+    const canvasRef = useRef<any>()
+
     return (
-        <LayoutUI>
-            <LayoutHeader>
-                Editor
-                <ThemeColorScheme/>
-            </LayoutHeader>
-            <LayoutSideNav>
-                <EditorMaterials/>
-            </LayoutSideNav>
-            <LayoutMain>
+        <EditorLayout
+            header={<ThemeColorScheme/>}
+            configMap={<ConfigMapEditor/>}
+            components={<EditorMaterials canvasRef={canvasRef}/>}>
+            <div ref={canvasRef}>
                 {children}
-            </LayoutMain>
-            <LayoutSidePane>
-                <ConfigMapEditor/>
-            </LayoutSidePane>
-        </LayoutUI>
+            </div>
+        </EditorLayout>
     );
 }

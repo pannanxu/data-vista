@@ -1,5 +1,5 @@
-import {definePlugin} from "@data-vista/core/plugin/plugins";
 import React from "react";
+import {definePlugin} from "@data-vista/core";
 
 const Line = React.lazy(() => import('./component'))
 

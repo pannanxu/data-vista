@@ -1,12 +1,13 @@
 import React from "react";
-import FreelyLayout from './Freely';
-import MobileLayout from './Mobile';
-import GridLayout from './Grid';
+import dynamic from "next/dynamic";
+
+const FreelyLayout = dynamic(() => import('./Freely'))
+const MobileLayout = dynamic(() => import('./Mobile'))
+const GridLayout = dynamic(() => import('./Grid'))
 
 const EditorLayout: React.FC<{
     layout: 'freely' | 'grid' | 'mobile'
 }> = ({layout}) => {
-
     return <div className={"layout-editor"}>
         <React.Suspense fallback={<div>加载中...</div>}>
             {layout === 'freely' && <FreelyLayout/>}

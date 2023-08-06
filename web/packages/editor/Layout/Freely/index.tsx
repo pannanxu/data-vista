@@ -1,25 +1,24 @@
-"use client";
-import React, {useState} from "react";
-import {LoaderPlugin} from "@data-vista/core";
+import React from "react";
+import Viewer from "./Viewer";
+import {withFreelyComponent} from "./withFreelyComponent";
+import FreelyRuler from "./Ruler";
+
+const Component = () => {
+    return <div>component</div>
+}
 
 const FreelyEditorLayout = () => {
+    let Element = withFreelyComponent(Component);
 
-    const [time, setTime] = useState(0);
-
-    const changeTime = (time: number) => {
-        console.log("time", time);
-        setTime(time);
-    };
-
-    return <div className={"freely-layout-editor"}>
-        <div>FreelyEditor: {time}</div>
-        <LoaderPlugin
-            url={"http://127.0.0.1:801/main.js"}
-            name={"PluginStarter"}
-            props={{
-                time: time,
-                changeTime: changeTime
-            }}/>
+    return <div className={"freely-layout-editor"} style={{
+        position: "relative",
+        width: "100%",
+        height: "calc(100vh - 64px)",
+    }}>
+        <FreelyRuler/>
+        <Viewer>
+            <Element/>
+        </Viewer>
     </div>;
 };
 
