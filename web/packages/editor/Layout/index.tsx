@@ -1,20 +1,24 @@
-import React from "react";
 import dynamic from "next/dynamic";
+import {definePlugin} from "@data-vista/plugin";
 
-const FreelyLayout = dynamic(() => import('./Freely'))
-const MobileLayout = dynamic(() => import('./Mobile'))
-const GridLayout = dynamic(() => import('./Grid'))
-
-const EditorLayout: React.FC<{
-    layout: 'freely' | 'grid' | 'mobile'
-}> = ({layout}) => {
-    return <div className={"layout-editor"}>
-        <React.Suspense fallback={<div>加载中...</div>}>
-            {layout === 'freely' && <FreelyLayout/>}
-            {layout === 'grid' && <GridLayout/>}
-            {layout === 'mobile' && <MobileLayout/>}
-        </React.Suspense>
-    </div>
-}
-
-export default EditorLayout;
+const editorLayout = definePlugin({
+    project: '@data-vista/editor/layout',
+    components: [
+        {
+            name: 'freely',
+            component: dynamic(() => import('./Freely')),
+            extensionPoints: 'Editor',
+        },
+        {
+            name: 'grid',
+            component: dynamic(() => import('./Grid')),
+            extensionPoints: 'Editor',
+        },
+        {
+            name: 'mobile',
+            component: dynamic(() => import('./Mobile')),
+            extensionPoints: 'Editor',
+        }
+    ]
+})
+export default editorLayout

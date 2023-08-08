@@ -16,7 +16,12 @@
     "@data-vista/editor": "workspace:*",
     "@data-vista/materials": "workspace:*",
     "@data-vista/runtime": "workspace:*",
-    "@data-vista/core": "workspace:*"
+    "@data-vista/core": "workspace:*",
+    "@data-vista/plugin": "workspace:*",
+    "ahooks": "^3.7.8",
+    "mitt": "^3.0.1",
+    "mobx": "^6.10.0",
+    "mobx-react-lite": "^4.0.3"
   },
   "devDependencies": {
     "@types/node": "^20.4.5",

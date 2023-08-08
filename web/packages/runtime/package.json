@@ -29,6 +29,7 @@
     "@data-vista/core": "workspace:*",
     "@data-vista/eslint-config-custom": "workspace:*",
     "@data-vista/tsconfig": "workspace:*",
+    "@data-vista/plugin": "workspace:*",
     "tsup": "^7.1.0"
   }
 }

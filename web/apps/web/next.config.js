@@ -6,6 +6,7 @@ module.exports = {
         "@data-vista/editor",
         "@data-vista/materials",
         "@data-vista/runtime",
-        "@data-vista/core"
+        "@data-vista/core",
+        "@data-vista/plugin"
     ],
 };

@@ -1,11 +1,7 @@
-import {coreComponents} from "./components";
-import {PluginContainer} from "@data-vista/core/plugin/PluginContainer";
+import components from "./components";
 
-const initRegisterCoreMaterials = () => {
-    const container = PluginContainer.get();
-    coreComponents.forEach(e => container.registerPlugin(e))
-}
+const materials = [
+    components
+]
 
-export {
-    initRegisterCoreMaterials
-};
+export default materials

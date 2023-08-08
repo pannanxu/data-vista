@@ -4,11 +4,12 @@ import {VistaBase} from "@data-vista/ui";
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
-export default function RootLayout({
-                                       children,
-                                   }: {
+export default async function RootLayout({
+                                             children,
+                                         }: {
     children: React.ReactNode;
 }) {
+
     return (
         <html lang="en">
         <body>

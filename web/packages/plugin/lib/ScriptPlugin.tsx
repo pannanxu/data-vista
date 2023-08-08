@@ -16,7 +16,7 @@ if (typeof window !== "undefined") {
     window.core = {definePlugin}
 }
 
-const LoaderPlugin: React.FC<{
+const ScriptPlugin: React.FC<{
     url: string,
     name: string,
     props?: any
@@ -36,4 +36,4 @@ const LoaderPlugin: React.FC<{
     </>;
 };
 
-export default LoaderPlugin;
+export default ScriptPlugin;

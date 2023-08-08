@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import Viewer from "./Viewer";
 import {withFreelyComponent} from "./withFreelyComponent";

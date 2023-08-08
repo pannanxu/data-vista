@@ -13,7 +13,8 @@
     "@data-vista/tsconfig": "workspace:*",
     "@data-vista/runtime": "workspace:*",
     "@data-vista/core": "workspace:*",
-    "eslint": "^7.32.0"
+    "eslint": "^7.32.0",
+    "@data-vista/plugin": "workspace:*"
   },
   "dependencies": {
     "@ant-design/charts": "^1.4.2",

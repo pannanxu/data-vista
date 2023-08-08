@@ -1,7 +1,9 @@
-import * as React from "react";
+"use client"
+import React from "react";
 import {LineProps} from "./types";
 
-const Line: React.FC<LineProps> = () => {
+const Line = (props: LineProps) => {
+    console.log(props)
     return (
         <div>
             <h1>line</h1>
