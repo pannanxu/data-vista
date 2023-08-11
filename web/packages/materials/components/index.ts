@@ -1,7 +1,9 @@
 import {definePlugin} from "@data-vista/plugin";
 import dynamic from "next/dynamic";
+
 export default definePlugin({
-    project: "@data-vista/material/component",
+    id: "@data-vista/material/component",
+    name: "DataVistaMaterials",
     components: [
         {
             name: 'line',

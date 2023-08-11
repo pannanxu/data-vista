@@ -2,11 +2,12 @@ import dynamic from "next/dynamic";
 import {definePlugin} from "@data-vista/plugin";
 
 const editorLayout = definePlugin({
-    project: '@data-vista/editor/layout',
+    id: '@data-vista/editor/layout',
+    name: "DataVistaEditorLayout",
     components: [
         {
             name: 'freely',
-            component: dynamic(() => import('./Freely')),
+            component: dynamic(() => import('./Freely/freely')),
             extensionPoints: 'Editor',
         },
         {

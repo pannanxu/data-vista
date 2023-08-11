@@ -2,12 +2,12 @@
 import {VistaList} from "@data-vista/ui";
 import VistaMaterialItem from "@data-vista/ui/VistaMaterialItem";
 import React, {useMemo, useRef} from "react";
-import {PluginContainer} from "@data-vista/plugin";
 import {useDrag} from "ahooks";
-import {Plugin} from "@data-vista/plugin/plugin";
+import {PluginResource} from "@data-vista/plugin/types";
+import {getPlugins} from "@data-vista/plugin";
 
 const MaterialDrag: React.FC<{
-    component: Plugin
+    component: PluginResource
 }> = ({component}) => {
 
     const componentRef = useRef<HTMLDivElement>(null);
@@ -22,18 +22,21 @@ const MaterialDrag: React.FC<{
     });
 
     return <div ref={componentRef}>
-        <VistaMaterialItem key={component.pluginId} icon={<i>icon<i></i></i>} displayName={component.name}/>
+        <VistaMaterialItem key={component.id} icon={<i>icon<i></i></i>} displayName={component.name}/>
     </div>
 }
 
 const EditorMaterials = () => {
 
     const components = useMemo(() => {
-        const definitions = PluginContainer.get().getAllPlugin();
-        return Object.keys(definitions)
-            .map(e => definitions[e])
-            .filter(plugin => plugin.extensionPoints === 'MaterialComponent')
-            .map(component => <MaterialDrag key={component.pluginId} component={component}/>)
+        const list: any[] = []
+        const definitions = getPlugins();
+        Object.keys(definitions).map(e => definitions[e]).forEach(plugin => {
+            plugin.components.forEach(component => {
+                list.push(<MaterialDrag key={`${component.pluginId}-${component.name}`} component={plugin}/>)
+            })
+        })
+        return list;
     }, [])
 
     return <>

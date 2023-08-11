@@ -7,7 +7,6 @@
   "scripts": {
     "core:build": "tsup index.ts --format cjs --dts",
     "core:dev": "npm run core:build -- --watch",
-    
     "lint": "eslint \"**/*.ts*\""
   },
   "publishConfig": {

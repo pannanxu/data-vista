@@ -16,7 +16,7 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
     actions: [
       {
         type: "add",
-        path: "{{pascalCase name}}/index.tsx",
+        path: "{{pascalCase name}}/freely.tsx",
         templateFile: "templates/component.hbs",
       },
       {

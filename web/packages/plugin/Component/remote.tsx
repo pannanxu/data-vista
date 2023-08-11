@@ -3,7 +3,8 @@ import React from "react";
 import Script from "next/script";
 import ReactDOM from "react-dom";
 import JSX from "react/jsx-runtime";
-import {definePlugin} from "./plugins";
+import {registerPlugin} from "../lib/register";
+import {definePlugin} from '../lib/definePlugin'
 
 if (typeof window !== "undefined") {
     // @ts-ignore
@@ -16,24 +17,27 @@ if (typeof window !== "undefined") {
     window.core = {definePlugin}
 }
 
-const ScriptPlugin: React.FC<{
-    url: string,
+const RemotePlugin: React.FC<{
+    src: string,
     name: string,
-    props?: any
-}> = ({url, name, props = {}}) => {
+    component: string,
+    props?: Record<any, any>
+}> = ({src, name, component, props = {}}) => {
     const [PluginComponent, setPluginComponent] = React.useState<any>(null);
 
     return <>
         <React.Suspense fallback={<div>loading</div>}>
             <Script
-                src={url}
+                src={src}
                 onLoad={() => {
                     // @ts-ignore
-                    setPluginComponent(PluginStarter.default.components[0].component);
+                    const plugin = registerPlugin(window[name].default);
+                    const Component = plugin.components.find(e => e.name === component);
+                    setPluginComponent(Component);
                 }}/>
             {PluginComponent && <PluginComponent {...props}/>}
         </React.Suspense>
     </>;
 };
 
-export default ScriptPlugin;
+export default RemotePlugin;

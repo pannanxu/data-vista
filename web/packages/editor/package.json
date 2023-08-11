@@ -12,16 +12,17 @@
     "@data-vista/core": "workspace:*",
     "@data-vista/eslint-config-custom": "workspace:*",
     "@data-vista/materials": "workspace:*",
+    "@data-vista/plugin": "workspace:*",
     "@data-vista/runtime": "workspace:*",
     "@data-vista/tsconfig": "workspace:*",
-    "@data-vista/ui": "workspace:*",
-    "@data-vista/plugin": "workspace:*"
+    "@data-vista/ui": "workspace:*"
   },
   "dependencies": {
     "@react-three/fiber": "^8.13.6",
     "@scena/guides": "^0.29.2",
     "infinite-viewer": "^0.28.1",
-    "react-moveable": "^0.54.1",
-    "react-selecto": "^1.26.0"
+    "moveable": "^0.51.1",
+    "nanoid": "^4.0.2",
+    "selecto": "^1.26.0"
   }
 }

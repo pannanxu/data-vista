@@ -1,10 +1,5 @@
 export type ExtensionPoint = 'Editor' | 'MaterialComponent' | 'RuleNode'
 
-export type Plugin = MaterialComponentType & {
-    pluginId: string
-    remote?: string
-}
-
 export type MaterialComponentType = {
     name: string
     component: any
@@ -17,13 +12,21 @@ export type MaterialComponentType = {
 export type PluginDefinition = {
 
     /**
-     * 插件名称 
+     * 插件名称（唯一ID）
      */
-    project: string;
-
+    id: string;
+    /**
+     * 插件名称（字母、数字、下划线组成）
+     */
+    name: string
     /**
      * 组件
      */
     components: MaterialComponentType[];
 
+}
+
+export type PluginResource = PluginDefinition & {
+
+    src?: string
 }

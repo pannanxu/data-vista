@@ -1,16 +1,8 @@
-import {makeAutoObservable} from "mobx";
 import InfiniteViewer from "infinite-viewer";
+import {makeAutoObservable} from "mobx";
+import {FreelyScrollType, FreelyViewportType} from "./freely.types";
 
-export type FreelyScrollType = {
-    scrollTop: number,
-    scrollLeft: number,
-}
-export type FreelyWindowType = {
-    width: number,
-    height: number,
-}
-
-const createInfiniteViewer = (freelyService: FreelyService,
+const createInfiniteViewer = (controller: ViewerController,
                               viewer: HTMLDivElement,
                               viewport: HTMLDivElement) => {
 
@@ -24,10 +16,10 @@ const createInfiniteViewer = (freelyService: FreelyService,
         }
     );
     infiniteViewer.on("pinch", (e) => {
-        freelyService.setZoom(e.zoom)
+        controller.setZoom(e.zoom)
     })
     infiniteViewer.on("scroll", (e) => {
-        freelyService.setScroll({
+        controller.setScroll({
             scrollLeft: e.scrollLeft,
             scrollTop: e.scrollTop
         })
@@ -35,20 +27,38 @@ const createInfiniteViewer = (freelyService: FreelyService,
     return infiniteViewer;
 }
 
-class FreelyService {
+class ViewerController {
 
-    window: FreelyWindowType = {
+    /**
+     * 视口配置
+     */
+    viewport: FreelyViewportType = {
         width: 1280,
         height: 1080
     }
+    /**
+     * 视口缩放比例
+     */
     zoom: number = 1.0
+    /**
+     * 视口移动位置
+     */
     scroll: FreelyScrollType = {
         scrollTop: 0,
         scrollLeft: 0
     }
+    /**
+     * 无限滚动组件实例
+     */
     infiniteViewer: InfiniteViewer | undefined
+    /**
+     * 无限滚动组件Dom
+     */
     viewer: HTMLDivElement | undefined
-    viewport: HTMLDivElement | undefined
+    /**
+     * 画布视口Dom
+     */
+    viewportEl: HTMLDivElement | undefined
 
     constructor() {
         makeAutoObservable(this);
@@ -62,30 +72,30 @@ class FreelyService {
         this.scroll = scroll
     }
 
-    public setWindow(window: FreelyWindowType) {
-        this.window = window
-        if (this.viewport) {
-            this.viewport.style.width = `${this.window.width}px`
-            this.viewport.style.height = `${this.window.height}px`
+    public setWindow(viewport: FreelyViewportType) {
+        this.viewport = viewport
+        if (this.viewportEl) {
+            this.viewportEl.style.width = `${this.viewport.width}px`
+            this.viewportEl.style.height = `${this.viewport.height}px`
         }
     }
 
-    public init(viewer: HTMLDivElement, viewport: HTMLDivElement) {
+    public init(viewer: HTMLDivElement, viewportEl: HTMLDivElement) {
         if (!this.infiniteViewer) {
             this.viewer = viewer;
-            this.viewport = viewport;
+            this.viewportEl = viewportEl;
 
             // 初始化时将画布缩放到可视区域
             const containerWidth = this.viewer.clientWidth;
-            const viewportWidth = this.window.width;
+            const viewportWidth = this.viewport.width;
             const zoom = containerWidth / viewportWidth;
             this.setZoom(zoom)
 
-            this.infiniteViewer = createInfiniteViewer(this, viewer, viewport)
+            this.infiniteViewer = createInfiniteViewer(this, viewer, viewportEl)
             this.infiniteViewer.setZoom(zoom)
             this.infiniteViewer.scrollCenter()
         }
     }
 }
 
-export default FreelyService;
+export default ViewerController

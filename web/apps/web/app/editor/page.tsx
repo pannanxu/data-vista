@@ -1,18 +1,18 @@
 "use client";
-import {PluginContainer, RenderPluginComponent} from "@data-vista/plugin";
-import React, {useRef} from "react";
+import {registerPlugin} from "@data-vista/plugin";
+import React from "react";
 import {useDrop} from "ahooks";
 import {publishEvent} from "@data-vista/core";
-import {MaterialComponentType} from "@data-vista/plugin/plugin";
+import {MaterialComponentType} from "@data-vista/plugin/types";
 import materials from "@data-vista/materials";
-import editorLayout from "@data-vista/editor/Layout";
+import editorLayout from "../../../../packages/editor/Canvas";
 import EditorLayout from "@data-vista/ui/EditorLayout";
 import ThemeColorScheme from "@data-vista/ui/ThemeColorScheme";
 import ConfigMapEditor from "@data-vista/editor/ConfigMap";
 import EditorMaterials from "@data-vista/editor/Materials";
+import {useCanvas} from "@data-vista/editor/Canvas/hooks/useCanvas";
 
-const container = PluginContainer.get();
-[...materials, editorLayout].forEach(e => container.registerPlugin(e));
+[...materials, editorLayout].forEach(e => registerPlugin(e));
 
 const Drop: React.FC<{
     canvasRef: React.MutableRefObject<any>
@@ -43,8 +43,9 @@ const Drop: React.FC<{
     return <></>;
 };
 
-export default function LayoutPage({searchParams}: { searchParams: { layout: string } }) {
-    const canvasRef = useRef()
+export default function LayoutPage({searchParams}: { searchParams: { pluginId: string, layout: string } }) {
+
+    const {canvas, canvasRef} = useCanvas(searchParams.pluginId, searchParams.layout);
 
     return (
         <>
@@ -55,9 +56,7 @@ export default function LayoutPage({searchParams}: { searchParams: { layout: str
                 <EditorMaterials/>
             </EditorLayout.Component>
             <EditorLayout.Editor>
-                <div ref={canvasRef}>
-                    <RenderPluginComponent name={searchParams.layout}/>
-                </div>
+                {canvas}
             </EditorLayout.Editor>
             <EditorLayout.Config>
                 <ConfigMapEditor/>
