@@ -27,9 +27,10 @@ const RemotePlugin: React.FC<{
     const [PluginComponent, setPluginComponent] = React.useState<any>(null);
 
     return <>
-        <React.Suspense fallback={<div>loading</div>}>
+        {/*<React.Suspense fallback={<div>loading</div>}>*/}
             <Script
                 src={src}
+                async={true}
                 onLoad={() => {
                     // @ts-ignore
                     const pluginDefinition = window[name].default;
@@ -38,7 +39,7 @@ const RemotePlugin: React.FC<{
                     setPluginComponent(Component);
                 }}/>
             {PluginComponent && <PluginComponent {...props}/>}
-        </React.Suspense>
+        {/*</React.Suspense>*/}
     </>;
 };
 

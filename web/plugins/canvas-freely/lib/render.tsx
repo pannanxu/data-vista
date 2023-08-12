@@ -1,42 +1,37 @@
 "use client";
 import Move from "./move";
-import React, {useState} from "react";
-import {useMount} from "ahooks";
-import {nanoid} from "nanoid";
-import {PluginComponent} from "@data-vista/plugin";
+import React from "react";
+import {PluginComponent, useCore} from "@data-vista/plugin";
+import {observer} from "mobx-react-lite";
+import {Component} from "@data-vista/core/types";
+import {toJS} from "mobx";
 
 
-const Render = () => {
-    const [data, setData] = useState<string[]>([]);
-    const [time, setTime] = useState<number>()
+const ComponentItem = observer(({id}: {
+    id: string
+}) => {
+    const {componentService} = useCore();
+    const component = componentService.getComponent(id);
+    return <Move dataset={{id: component.id}} sx={component.sx}>
+        <PluginComponent id={component.pluginId} component={component.component}/>
+    </Move>
+})
 
-    useMount(() => {
-        setData(Array.from({length: 1}).map(e => nanoid()))
-    })
-
+const Components = observer(({getComponents}: { getComponents: () => Component[] }) => {
+    const components = getComponents();
     return <>
-        <Move>
-            {time},
-            <PluginComponent id={'@data-vista/plugin-starter'}
-                             component={'plugin-line'}
-                             time={time}
-                             changeTime={setTime}/>
-        </Move>
-        <Move>
-            <PluginComponent id={'@data-vista/material-antd-charts'}
-                             component={'line'}/>
-        </Move>
-        <Move key={'material-apache-echarts-line'}>
-            <PluginComponent id={'@data-vista/material-apache-echarts'}
-                             component={'line'}/>
-        </Move>
         {
-            data?.map((id) => {
-                return <Move key={id}>
-                    Hello {id}
-                </Move>
+            components.map(component => {
+                return <ComponentItem key={component.id} id={component.id}/>
             })
         }
+    </>
+})
+
+const Render = () => {
+    const {componentService} = useCore()
+    return <>
+        <Components getComponents={() => toJS(componentService.all)}/>
     </>
 }
 

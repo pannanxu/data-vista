@@ -1,13 +1,15 @@
 import mitt from 'mitt'
+import OnSelected from '../event/OnSelected';
 
 export type Events = {
-    DragComponentToCanvas: any
+    DragComponentToCanvas: any,
+    OnSelected: OnSelected
 };
 
-
 class Eventbus {
-    
-     readonly bus = mitt<Events>(); // inferred as Emitter<Events>
+
+    readonly bus = mitt<Events>(); // inferred as Emitter<Events>
+
 
 }
 

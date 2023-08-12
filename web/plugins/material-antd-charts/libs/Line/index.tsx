@@ -1,7 +1,6 @@
 "use client"
-import React, {useState} from "react";
+import React, {useEffect, useState, useTransition} from "react";
 import {Line as AntLine} from "@ant-design/charts";
-import {useAsyncEffect} from "ahooks";
 
 const asyncFetch = () => {
     return fetch('https://gw.alipayobjects.com/os/bmw-prod/55424a73-7cb8-4f79-b60d-3ab627ac5698.json')
@@ -31,17 +30,19 @@ const config: any = {
 const Line = () => {
 
     const [data, setData] = useState();
+    const [_, start] = useTransition()
 
-    useAsyncEffect(async () => {
-        const res = await asyncFetch();
-        setData({
-            ...config,
-            data: res
+    useEffect(() => {
+        start(() => {
+            asyncFetch().then(res => setData({
+                ...config,
+                data: res
+            }))
         })
     }, []);
 
     // @ts-ignore
-    return (data && typeof document !== "undefined") ? <AntLine {...data} /> : <div>line loading...</div>;
+    return data ? <AntLine {...data} /> : <div>line loading...</div>;
 };
 
 export default Line

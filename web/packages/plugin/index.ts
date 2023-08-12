@@ -4,7 +4,8 @@ export * from './lib/definePlugin'
 /* core */
 export {
     useEvent,
-    publishEvent
+    publishEvent,
+    useCore
 } from '@data-vista/core'
 /* 物料 */
 export type * from '@data-vista/materials'

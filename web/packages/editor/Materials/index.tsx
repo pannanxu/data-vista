@@ -1,28 +1,52 @@
 "use client";
 import {VistaList} from "@data-vista/ui";
 import VistaMaterialItem from "@data-vista/ui/VistaMaterialItem";
-import React, {useMemo, useRef} from "react";
-import {useDrag} from "ahooks";
+import React, {useEffect, useMemo, useRef} from "react";
 import type {PluginResource} from "@data-vista/plugin/types";
+import {MaterialComponentType} from "@data-vista/plugin/types";
 import {getPlugins} from "@data-vista/plugin";
 
 const MaterialDrag: React.FC<{
-    component: PluginResource
-}> = ({component}) => {
+    plugin: PluginResource
+    component: MaterialComponentType
+}> = ({plugin, component}) => {
 
     const componentRef = useRef<HTMLDivElement>(null);
-
-    useDrag(component, componentRef, {
-        onDragStart: () => {
-            // .
-        },
-        onDragEnd: () => {
-            // .
-        },
+    const dataRef = useRef<any>({
+        plugin: plugin,
+        component: component,
+        offset: {
+            x: 1,
+            y: 1
+        }
     });
 
-    return <div ref={componentRef}>
-        <VistaMaterialItem key={component.id} icon={<i>icon<i></i></i>} displayName={component.name}/>
+    const getData = () => {
+        return dataRef.current;
+    }
+
+    useEffect(() => {
+        const fn = (ev: DragEvent) => {
+            // @ts-ignore
+            const {clientWidth, clientHeight} = ev.target || {};
+            const data = {
+                ...getData(),
+                offset: {
+                    x: ev.offsetX / clientWidth,
+                    y: ev.offsetY / clientHeight
+                }
+            };
+            ev.dataTransfer?.setData('custom', JSON.stringify(data));
+        }
+        componentRef.current?.addEventListener("dragstart", fn)
+
+        return () => {
+            componentRef.current?.removeEventListener("dragstart", fn)
+        }
+    }, [component]);
+
+    return <div ref={componentRef} draggable={true}>
+        <VistaMaterialItem icon={<i>icon<i></i></i>} displayName={`${plugin.id}_${component.name}`}/>
     </div>
 }
 
@@ -34,7 +58,7 @@ const EditorMaterials = () => {
         Object.keys(definitions).map(e => definitions[e]).forEach(plugin => {
             plugin.components.forEach(component => {
                 let key = `${plugin.id}-${component.name}`;
-                list.push(<MaterialDrag key={key} component={plugin}/>)
+                list.push(<MaterialDrag key={key} plugin={plugin} component={component}/>)
             })
         })
         return list;

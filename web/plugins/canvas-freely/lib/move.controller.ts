@@ -1,6 +1,8 @@
 import {makeAutoObservable} from "mobx";
 import Moveable, {getElementInfo} from "moveable";
 import Selecto from "selecto";
+import {publishEvent} from "@data-vista/core";
+import OnSelected from "@data-vista/core/event/OnSelected";
 
 const DimensionViewable = {
     name: "dimensionViewable",
@@ -215,7 +217,9 @@ export default class MoveController {
 
     public setSelect(component: HTMLDivElement[]) {
         if (this.moveable) {
-            this.moveable.target = [component]
+            this.moveable.target = component;
+            const ids = component.map(e => e.dataset.id).filter(e => e);
+            publishEvent('OnSelected', new OnSelected(ids as string[]))
         }
     }
 }

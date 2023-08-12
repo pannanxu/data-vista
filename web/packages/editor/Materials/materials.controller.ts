@@ -5,4 +5,8 @@ export default class MaterialsController {
     constructor() {
         makeAutoObservable(this)
     }
+    
+    public addEventListener() {
+        
+    }
 }

@@ -1,8 +1,8 @@
 "use client";
 
-import {ConfigMapService, useCore} from "@data-vista/core";
-import {VistaButton} from "@data-vista/ui";
+import {ConfigMapService, useCore, useEvent} from "@data-vista/core";
 import withMonitor from "@data-vista/core/withMonitor";
+import {useState} from "react";
 
 const ConfigMapComponent = withMonitor<{
     service: ConfigMapService
@@ -26,28 +26,16 @@ const ConfigMapComponents = withMonitor<{
 
 const ConfigMapEditor = () => {
     const {configMapService} = useCore();
+    const [component, setComponent] = useState<string>();
+
+    useEvent('OnSelected', (event) => {
+        if (event.components.length === 1) {
+            setComponent(event.components[0]);
+        }
+    })
 
     return <div className={"config-map-editor"}>
-        <ConfigMapComponents service={configMapService}/>
-        <VistaButton onClick={() => {
-            configMapService.getConfigMap(new Date().valueOf().toString());
-        }}>
-            get
-        </VistaButton>
-        <VistaButton onClick={() => {
-            const key = configMapService.getConfigKeys()[0];
-            configMapService.removeConfig(key);
-        }}>
-            del
-        </VistaButton>
-        <VistaButton onClick={() => {
-            const key = configMapService.getConfigKeys()[0];
-            let configMap = configMapService.getConfigMap(key);
-            configMap?.locker.toggleLock();
-            console.log('json: ', JSON.stringify(configMap));
-        }}>
-            lock
-        </VistaButton>
+        {component}
     </div>
 }
 
