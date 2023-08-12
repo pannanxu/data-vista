@@ -16,7 +16,7 @@ export default defineConfig({
             fileName: () => "main.js",
         },
         rollupOptions: {
-            external: ["react", "react-dom", "react/jsx-runtime", "@data-vista/core"],
+            external: ["react", "react-dom", "react/jsx-runtime", "@data-vista/plugin"],
             output: {
                 globals: {
                     react: "React",

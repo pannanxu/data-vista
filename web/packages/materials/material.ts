@@ -1,6 +1,6 @@
 import React from "react";
 
-export interface Component<T = any> {
+export type MaterialComponent<T = any> = {
     readonly name: string;
     readonly displayName: string;
     readonly icon: string;

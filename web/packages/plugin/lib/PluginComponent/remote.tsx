@@ -3,8 +3,8 @@ import React from "react";
 import Script from "next/script";
 import ReactDOM from "react-dom";
 import JSX from "react/jsx-runtime";
-import {registerPlugin} from "../lib/register";
-import {definePlugin} from '../lib/definePlugin'
+import {registerPlugin} from "../register";
+import * as plugin from "../../index";
 
 if (typeof window !== "undefined") {
     // @ts-ignore
@@ -14,15 +14,16 @@ if (typeof window !== "undefined") {
     // @ts-ignore
     window.jsxRuntime = JSX;
     // @ts-ignore
-    window.core = {definePlugin}
+    window.plugin = plugin;
 }
 
 const RemotePlugin: React.FC<{
     src: string,
     name: string,
     component: string,
-    props?: Record<any, any>
-}> = ({src, name, component, props = {}}) => {
+    [key: string]: any
+}> = (props) => {
+    const {src, name, component} = props;
     const [PluginComponent, setPluginComponent] = React.useState<any>(null);
 
     return <>
@@ -31,8 +32,9 @@ const RemotePlugin: React.FC<{
                 src={src}
                 onLoad={() => {
                     // @ts-ignore
-                    const plugin = registerPlugin(window[name].default);
-                    const Component = plugin.components.find(e => e.name === component);
+                    const pluginDefinition = window[name].default;
+                    const plugin = registerPlugin(pluginDefinition);
+                    const Component = plugin.components.find(e => e.name === component)?.component;
                     setPluginComponent(Component);
                 }}/>
             {PluginComponent && <PluginComponent {...props}/>}

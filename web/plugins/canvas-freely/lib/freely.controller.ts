@@ -2,7 +2,6 @@ import ViewerController from "./viewer.controller";
 import RulerController from "./ruler.controller";
 import {autorun} from "mobx";
 import MoveController from "./move.controller";
-import {useMount} from "ahooks";
 
 class FreelyController {
 

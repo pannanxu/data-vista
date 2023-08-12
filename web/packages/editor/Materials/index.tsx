@@ -3,7 +3,7 @@ import {VistaList} from "@data-vista/ui";
 import VistaMaterialItem from "@data-vista/ui/VistaMaterialItem";
 import React, {useMemo, useRef} from "react";
 import {useDrag} from "ahooks";
-import {PluginResource} from "@data-vista/plugin/types";
+import type {PluginResource} from "@data-vista/plugin/types";
 import {getPlugins} from "@data-vista/plugin";
 
 const MaterialDrag: React.FC<{
@@ -33,7 +33,8 @@ const EditorMaterials = () => {
         const definitions = getPlugins();
         Object.keys(definitions).map(e => definitions[e]).forEach(plugin => {
             plugin.components.forEach(component => {
-                list.push(<MaterialDrag key={`${component.pluginId}-${component.name}`} component={plugin}/>)
+                let key = `${plugin.id}-${component.name}`;
+                list.push(<MaterialDrag key={key} component={plugin}/>)
             })
         })
         return list;

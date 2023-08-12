@@ -1,20 +1,22 @@
 {
-  "name": "@data-vista/plugin",
+  "name": "@data-vista/plugin-material-antd-charts",
   "version": "0.0.1",
   "private": false,
   "license": "MIT",
   "scripts": {
-    "plugin:build": "tsup index.ts --format cjs --dts",
-    "plugin:dev": "npm run plugin:build -- --watch",
+    "freely:build": "tsup index.ts --format cjs --dts",
+    "freely:dev": "npm run freely:build -- --watch",
     "lint": "eslint \"**/*.ts*\""
   },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
+  "dependencies": {
+    "@ant-design/charts": "^1.4.2"
+  },
   "devDependencies": {
-    "@data-vista/core": "workspace:*",
-    "@data-vista/materials": "workspace:*",
+    "@data-vista/plugin": "workspace:*",
     "@data-vista/eslint-config-custom": "workspace:*",
     "@data-vista/tsconfig": "workspace:*",
     "tsup": "^7.1.0"

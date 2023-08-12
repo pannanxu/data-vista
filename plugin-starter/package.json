@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@data-vista/core": "0.0.1-0.0.9",
+    "@data-vista/plugin": "0.0.1",
     "next": "^13.4.12",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

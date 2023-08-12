@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "^13.4.12",
+    "next": "^13.4.13",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "@data-vista/ui": "workspace:*",
@@ -18,6 +18,9 @@
     "@data-vista/runtime": "workspace:*",
     "@data-vista/core": "workspace:*",
     "@data-vista/plugin": "workspace:*",
+    "@data-vista/plugin-canvas-freely": "workspace:*",
+    "@data-vista/plugin-material-antd-charts": "workspace:*",
+    "@data-vista/plugin-material-apache-echarts": "workspace:*",
     "ahooks": "^3.7.8",
     "mitt": "^3.0.1",
     "mobx": "^6.10.0",
