@@ -1,9 +1,5 @@
 lockfileVersion: '6.0'
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
-
 importers:
 
   .:
@@ -232,18 +228,9 @@ importers:
 
   packages/materials:
     devDependencies:
-      '@data-vista/core':
-        specifier: workspace:*
-        version: link:../core
       '@data-vista/eslint-config-custom':
         specifier: workspace:*
         version: link:../eslint-config-custom
-      '@data-vista/plugin':
-        specifier: workspace:*
-        version: link:../plugin
-      '@data-vista/runtime':
-        specifier: workspace:*
-        version: link:../runtime
       '@data-vista/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -8678,3 +8665,7 @@ packages:
     dependencies:
       tslib: 2.3.0
     dev: false
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false

@@ -11,9 +11,6 @@
   "devDependencies": {
     "@data-vista/eslint-config-custom": "workspace:*",
     "@data-vista/tsconfig": "workspace:*",
-    "@data-vista/runtime": "workspace:*",
-    "@data-vista/core": "workspace:*",
-    "eslint": "^7.32.0",
-    "@data-vista/plugin": "workspace:*"
+    "eslint": "^7.32.0"
   }
 }

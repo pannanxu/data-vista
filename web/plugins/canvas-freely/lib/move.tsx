@@ -5,7 +5,7 @@ import './move.style.scss'
 import {ComponentSx} from "@data-vista/core/types";
 
 const Move: React.FC<{
-    children?: React.ReactNode
+    children?: any
     dataset: {
         id: string
     },
